@@ -31,6 +31,38 @@ function createElement(customerName, issue, priorityLevel) {
         resolveTicket(supportTicket);
     });
 
+    // TASK 5: INLINE EDITING OF SUPPORT TICKETS
+    // Add event listener to each support ticket to allow editing
+    supportTicket.addEventListener("dblclick", function(event) {
+        
+        // Identify the ticket and text selected 
+        const clickedItem = event.target;
+        const clickedText = clickedItem.textContent;
+       
+        // Check if item clicked is text within a support ticket
+        if (clickedItem.closest(".support-ticket") && clickedItem.matches("p, h3")) {
+            
+            const input = document.createElement("input");
+            input.setAttribute("value", clickedText);
+            clickedItem.replaceWith(input);  
+            
+            // Add save button
+            const saveButton = document.createElement("button");
+            saveButton.setAttribute("id", "saveButton");
+            saveButton.textContent = "Save";
+            input.insertAdjacentElement("afterend", saveButton);
+
+            saveButton.addEventListener("click", function() {
+                const inputText = input.value;
+                const replacedText = document.createElement(clickedItem.tagName.toLowerCase());
+
+                replacedText.textContent = inputText
+                input.replaceWith(replacedText);
+                saveButton.remove();
+            })
+        }
+    })
+
     ticketContainerId.appendChild(supportTicket);
 }
 

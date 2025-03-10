@@ -17,7 +17,7 @@ function createElement(customerName, issue, priorityLevel) {
     supportTicket.setAttribute("data-priority", priorityLevel);
 
     // Populate the card with customer name and position
-    supportTicket.innerHTML = "<h3>" + customerName + "</h3><p>" + issue + "</p><br><strong>Priority Level: </strong>" + priorityLevel + "</strong></p>";
+    supportTicket.innerHTML = "<h3>" + customerName + "</h3><p>" + issue + "</p><br><strong>Priority Level: </strong><span>" + priorityLevel + "</span></p>";
 
     // Adding resolve ticket button
     const resolveButton = document.createElement("button");
@@ -40,7 +40,7 @@ function createElement(customerName, issue, priorityLevel) {
         const clickedText = clickedItem.textContent;
        
         // Check if item clicked is text within a support ticket
-        if (clickedItem.closest(".support-ticket") && clickedItem.matches("p, h3")) {
+        if (clickedItem.closest(".support-ticket") && clickedItem.matches("p, h3, span")) {
             
             const input = document.createElement("input");
             input.setAttribute("value", clickedText);

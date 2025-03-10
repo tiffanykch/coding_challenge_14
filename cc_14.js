@@ -16,17 +16,17 @@ function createElement(customerName, issue, priorityLevel) {
     // Set data attribute for priorityLevel to aid Task 3
     supportTicket.setAttribute("data-priority", priorityLevel);
 
-    // Populate the card with employee name and position
+    // Populate the card with customer name and position
     supportTicket.innerHTML = "<h3>" + customerName + "</h3><p>" + issue + "</p><br><strong>Priority Level: </strong>" + priorityLevel + "</strong></p>";
 
-    // Adding remove employee button
+    // Adding resolve ticket button
     const resolveButton = document.createElement("button");
     resolveButton.setAttribute("id", "resolveButton");
     resolveButton.textContent = "Resolve Ticket";
     supportTicket.appendChild(resolveButton);
 
     //TASK 4
-    // Attach event listener to remove employee button
+    // Attach event listener to resolve support ticket
     resolveButton.addEventListener("click", function() {
         resolveTicket(supportTicket);
     });
